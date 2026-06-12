@@ -305,6 +305,12 @@ ai-cctv-surveillance-dashboard
 
 ---
 
+## 🎥 Demo Video
+
+[Watch Demo](https://youtu.be/GsY685PEl3g)
+
+---
+
 # 🎯 Research Objective
 
 To develop an intelligent surveillance system capable of automatically detecting weapons in CCTV images and generating alerts to support security personnel in threat identification and rapid response.
