@@ -2,14 +2,11 @@ venv/
 __pycache__/
 *.pyc
 
-.env
-
-static/uploads/
 static/detected/
+static/uploads/
 
-runs/
+APP_Check_Dataset/
 
 .idea/
 .vscode/
-
-*.log
+.env
