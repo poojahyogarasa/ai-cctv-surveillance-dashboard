@@ -1,5 +1,10 @@
 # 🎥 AI CCTV Surveillance Dashboard
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Flask](https://img.shields.io/badge/Flask-WebApp-green)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-AI-red)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+
 ## 🛡️ AI-Powered Weapon Detection and Security Monitoring System
 
 An intelligent CCTV surveillance system that automatically detects weapons from CCTV images, classifies weapon types, generates security alerts, and provides a Security Operations Center (SOC) dashboard for real-time threat monitoring.
@@ -163,13 +168,6 @@ Classes:
 
 * Weapon
 
-Performance:
-
-* Precision: 75.6%
-* Recall: 58.1%
-* mAP@50: 60.8%
-* mAP@50-95: 26.3%
-
 ---
 
 ## Model 2 – Weapon Classification
@@ -184,12 +182,12 @@ Classes:
 * Firearm
 * Knife
 
-Performance:
+---
 
-* Precision: 87.7%
-* Recall: 63.6%
-* mAP@50: 70.9%
-* mAP@50-95: 40.8%
+| Model | Precision | Recall | mAP50 |
+|---------|---------|---------|---------|
+| Model 1 | 75.6% | 58.1% | 60.8% |
+| Model 2 | 87.7% | 63.6% | 70.9% |
 
 ---
 
