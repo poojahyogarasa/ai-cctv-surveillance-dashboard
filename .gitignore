@@ -2,14 +2,11 @@ venv/
 __pycache__/
 *.pyc
 
-.env
+static/detected/
+static/uploads/
 
-runs/
-*.pt
-
-uploads/
+APP_Check_Dataset/
 
 .idea/
 .vscode/
-
-database_backup.sql
+.env
