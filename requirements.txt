@@ -1,0 +1,7 @@
+Flask
+mysql-connector-python
+ultralytics
+opencv-python
+numpy
+Pillow
+gunicorn
