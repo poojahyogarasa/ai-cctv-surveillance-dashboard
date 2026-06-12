@@ -4,12 +4,12 @@ __pycache__/
 
 .env
 
-runs/
-*.pt
+static/uploads/
+static/detected/
 
-uploads/
+runs/
 
 .idea/
 .vscode/
 
-database_backup.sql
+*.log
