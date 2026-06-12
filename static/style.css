@@ -1,0 +1,332 @@
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#101820;
+    color:white;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* =========================
+   Statistics Cards
+========================= */
+
+.cards{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    flex:1;
+    background:#1b2a41;
+    padding:20px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.card p{
+    font-size:32px;
+    font-weight:bold;
+}
+
+/* =========================
+   Upload Section
+========================= */
+
+.upload-section{
+    background:#1b2a41;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:30px;
+}
+
+button{
+    padding:10px 20px;
+    background:#00c853;
+    border:none;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#00b248;
+}
+
+/* =========================
+   Alerts Table
+========================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#1b2a41;
+}
+
+th,
+td{
+    padding:15px;
+    border:1px solid #333;
+    text-align:center;
+}
+
+th{
+    background:#223654;
+}
+
+/* =========================
+   Detection Result Section
+========================= */
+
+.result-section{
+    margin-top:30px;
+    background:#1b2a41;
+    padding:20px;
+    border-radius:10px;
+}
+
+.image-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.image-box{
+    text-align:center;
+}
+
+.image-box h3{
+    margin-bottom:10px;
+}
+
+.image-box img{
+    width:400px;
+    max-width:100%;
+    border-radius:10px;
+    border:2px solid white;
+}
+
+.result-details{
+    margin-top:20px;
+    text-align:center;
+}
+
+.result-details h3{
+    margin:10px 0;
+}
+
+/* =========================
+   Threat Alert Box
+========================= */
+
+.alert-danger{
+    background:#ff4d4d;
+    color:white;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.alert-safe{
+    background:#28a745;
+    color:white;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+/* =========================
+   Alarm Banner
+========================= */
+
+.alarm-banner{
+    background:red;
+    color:white;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    padding:15px;
+    animation:blink 1s infinite;
+    position:sticky;
+    top:0;
+    z-index:9999;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0.4;
+    }
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+@media (max-width:900px){
+
+    .cards{
+        flex-direction:column;
+    }
+
+    .image-container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .image-box img{
+        width:100%;
+        max-width:400px;
+    }
+}
+
+    /* =========================
+   Professional Header
+========================= */
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    padding:20px;
+    background:#162742;
+    border-radius:12px;
+}
+
+.header-left h1{
+    margin:0;
+    color:white;
+    font-size:38px;
+}
+
+.header-left p{
+    margin-top:8px;
+    color:#b8c7e0;
+}
+
+.header-right{
+    text-align:right;
+}
+
+.header-right{
+    display:flex;
+    gap:15px;
+}
+
+.status-card{
+    background:#0f1f35;
+    border:1px solid #223654;
+    border-radius:12px;
+    padding:15px 20px;
+    min-width:180px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+.card-title{
+    color:#8fb3d9;
+    font-size:14px;
+    margin-bottom:10px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.card-value{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.clock-box{
+    background:#0f1f35;
+    padding:10px 15px;
+    border-radius:8px;
+    font-weight:bold;
+    color:#00d9ff;
+}
+
+.ai-eye-card{
+    margin-top:30px;
+    text-align:center;
+    color:white;
+}
+
+.eye-container{
+    display:flex;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.eye{
+    width:80px;
+    height:45px;
+    background:white;
+    border-radius:50%;
+    position:relative;
+    overflow:hidden;
+
+    animation: blink 4s infinite;
+}
+
+.pupil{
+    width:20px;
+    height:20px;
+    background:#00c0ff;
+    border-radius:50%;
+
+    position:absolute;
+    top:12px;
+    left:30px;
+
+    box-shadow:0 0 15px #00c0ff;
+}
+
+@keyframes blink {
+
+    0%,90%,100%{
+        height:45px;
+    }
+
+    95%{
+        height:5px;
+    }
+}
+
+.eye{
+    box-shadow:
+    0 0 15px rgba(0,192,255,.5),
+    0 0 30px rgba(0,192,255,.3);
+}
+
+.ai-eye-card{
+    background:red !important;
+}
+
+.eye{
+    width:80px !important;
+    height:45px !important;
+    background:white !important;
+    border:3px solid red !important;
+    display:block !important;
+    margin:auto !important;
+}

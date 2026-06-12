@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>AI CCTV Surveillance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+{% if alarm %}
+<div class="alarm-banner">
+    🚨 WEAPON DETECTED 🚨
+</div>
+{% endif %}
+
+<div class="container">
+
+
+<div class="dashboard-header">
+
+    <div class="header-left">
+        <h1>🛡️ AI THREAT MONITORING CENTER</h1>
+        <p>Real-Time CCTV Weapon Detection & Alert System</p>
+    </div>
+
+    <div class="header-right">
+
+    <div class="status-card">
+
+        <div class="card-title">
+            🟢 SYSTEM STATUS
+        </div>
+
+        <div class="card-value">
+            ONLINE
+        </div>
+
+    </div>
+
+    <div class="status-card">
+
+        <div class="card-title">
+            🕒 CURRENT TIME
+        </div>
+
+        <div id="liveClock" class="card-value">
+            Loading...
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+<!-- Statistics Cards -->
+<div class="cards">
+
+    <div class="card">
+        <h2>Total Alerts</h2>
+        <p>{{ total_alerts }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Firearm Alerts</h2>
+        <p>{{ firearm_alerts }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Knife Alerts</h2>
+        <p>{{ knife_alerts }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Axe Alerts</h2>
+        <p>{{ axe_alerts }}</p>
+    </div>
+
+    
+</div>
+
+<!-- Upload Section -->
+<div class="upload-section">
+
+    <h2>Upload Your File</h2>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="image"
+            id="imageInput"
+            accept="image/*"
+            required>
+
+        <br><br>
+
+        <img
+            id="previewImage"
+            src=""
+            alt="Preview"
+            style="
+                max-width:400px;
+                display:none;
+                border-radius:10px;
+                border:2px solid #ccc;
+            ">
+
+        <br><br>
+
+        <button type="submit">
+            Upload Image/Video
+        </button>
+
+    </form>
+
+</div>
+
+<!-- Detection Result -->
+{% if result %}
+
+<div class="result-section">
+
+    <h2>Detection Result</h2>
+
+    <div class="image-container">
+
+        <div class="image-box">
+
+            <h3>Original Image</h3>
+
+            <img
+                src="{{ url_for('static', filename='uploads/' + uploaded_image) }}"
+                alt="Original Image">
+
+        </div>
+
+        <div class="image-box">
+
+            <h3>Detected Image</h3>
+
+            {% if result.detected_image %}
+
+            <img
+                src="{{ url_for('static', filename='detected/' + result.detected_image) }}"
+                alt="Detected Image">
+
+            {% else %}
+
+            <p>No detection image available</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="result-details">
+
+    {% if result.status == "Weapon Detected" %}
+        <div class="alert-danger">
+            🚨 THREAT DETECTED
+        </div>
+    {% else %}
+        <div class="alert-safe">
+            ✅ AREA SAFE
+        </div>
+    {% endif %}
+
+    <h3>Status: {{ result.status }}</h3>
+
+    <h3>Weapon Type: {{ result.weapon_type }}</h3>
+
+    <h3>Confidence: {{ result.confidence }}%</h3>
+
+</div>
+
+</div>
+
+{% endif %}
+
+<!-- Recent Alerts -->
+<div class="alerts">
+
+    <h2>Recent Alerts</h2>
+
+   <table>
+
+    <tr>
+    <th>Image</th>
+    <th>Weapon Type</th>
+    <th>Confidence</th>
+    <th>Time</th>
+</tr>
+
+{% if alerts %}
+
+    {% for alert in alerts %}
+
+    <tr>
+        <td>{{ alert.image_name }}</td>
+        <td>{{ alert.weapon_type }}</td>
+        <td>{{ alert.confidence }}%</td>
+        <td>{{ alert.alert_time }}</td>
+    </tr>
+
+    {% endfor %}
+
+{% else %}
+
+    <tr>
+        <td colspan="4">
+            No alerts available
+        </td>
+    </tr>
+
+{% endif %}
+            
+
+    </table>
+
+</div>
+
+
+</div>
+
+<script>
+
+document.getElementById("imageInput")
+.addEventListener("change", function(event){
+
+    const file = event.target.files[0];
+
+    if(file){
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            const preview =
+                document.getElementById("previewImage");
+
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+});
+
+</script>
+
+<audio id="alarmSound">
+    <source
+        src="{{ url_for('static', filename='sounds/alarm.mp3') }}"
+        type="audio/mpeg">
+</audio>
+
+{% if alarm %}
+<script>
+
+window.addEventListener("load", function(){
+
+    const sound =
+        document.getElementById("alarmSound");
+
+    sound.play().catch(function(error){
+        console.log("Audio autoplay blocked:", error);
+    });
+
+});
+
+</script>
+{% endif %}
+
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    const date =
+        now.toLocaleDateString();
+
+    const time =
+        now.toLocaleTimeString();
+
+    document.getElementById("liveClock")
+        .innerHTML = date + "<br>" + time;
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
+
+</body>
+</html>

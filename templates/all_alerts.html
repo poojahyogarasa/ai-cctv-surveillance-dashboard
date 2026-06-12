@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Detection History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='adminlte/css/adminlte.css') }}">
+</head>
+
+<body class="bg-dark text-white">
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        🚨 Complete Detection History
+    </h2>
+
+    <div class="card bg-dark">
+
+        <div class="card-body">
+
+            <table class="table table-dark table-hover">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Weapon</th>
+                        <th>Confidence</th>
+                        <th>Detection Time</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {% for alert in alerts %}
+
+                    <tr>
+
+                        <td>
+    <a href="/alert/{{ alert.id }}"
+       class="text-info fw-bold">
+        #{{ alert.id }}
+    </a>
+</td>
+
+                        <td>
+
+                        {% if alert.weapon_type == 'firearm' %}
+                            <span class="badge bg-danger">
+                                Firearm
+                            </span>
+
+                        {% elif alert.weapon_type == 'knife' %}
+                            <span class="badge bg-warning text-dark">
+                                Knife
+                            </span>
+
+                        {% else %}
+                            <span class="badge bg-info">
+                                Axe
+                            </span>
+
+                        {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ alert.confidence }}%
+                        </td>
+
+                        <td>
+                            {{ alert.alert_time }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
